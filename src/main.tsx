@@ -7,7 +7,8 @@ import { ThemeContextProvider } from "./theme/ThemeContextProvider.tsx";
 
 createRoot(document.getElementById("root")!).render(
   <StrictMode>
-    <App />
-    <ThemeContextProvider></ThemeContextProvider>
+    <ThemeContextProvider>
+      <App />
+    </ThemeContextProvider>
   </StrictMode>
 );
