@@ -4,7 +4,7 @@ import {
   ThemeProvider,
 } from "@mui/material";
 import { createContext, ReactNode, useMemo, useState } from "react";
-import { useThemeDetector } from "../hooks/useThemeDetector";
+import { useThemeDetector } from "../hooks/use-theme-detector";
 
 type ThemeContext = {
   children: ReactNode;
