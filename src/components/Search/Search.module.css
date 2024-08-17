@@ -1,0 +1,15 @@
+.inputContainer {
+  display: flex;
+  border-radius: 18px;
+  padding: 8px;
+  background-color: rgba(215, 213, 213, 0.45);
+  
+}
+
+.input {
+  outline: none;
+  background-color: transparent;
+  border: none;
+  color: rgb(0, 0, 0);
+  width: 100%;
+}

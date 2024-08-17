@@ -1,0 +1,11 @@
+.container {
+    background-color: rgb(255, 255, 255);
+}
+
+.degree {
+    display: flex;
+}
+
+.locationTimestamp{
+    display: flex;
+}
