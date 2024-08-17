@@ -1,4 +1,4 @@
-import Container from "./components/Container";
+import Container from "./components/Container/Container";
 import CurrentWeather from "./components/CurrentWeather/CurrentWeather";
 import Forecast from "./components/Forecast";
 import Header from "./components/Header";
@@ -9,7 +9,7 @@ import styles from "./App.module.css";
 function App() {
   return (
     <>
-      <Container className={styles.Container}>
+      <Container className={styles.container}>
         {/* left container */}
         <Container>
           <CurrentWeather />
