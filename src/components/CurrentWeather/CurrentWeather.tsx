@@ -1,17 +1,23 @@
-import CloudQueueIcon from '@mui/icons-material/CloudQueue';
-import AccessTimeIcon from '@mui/icons-material/AccessTime';
+import CloudQueueIcon from "@mui/icons-material/CloudQueue";
+import AccessTimeIcon from "@mui/icons-material/AccessTime";
+import ThunderstormIcon from "@mui/icons-material/Thunderstorm";
 
 import ClimateData from "../ClimateData/ClimateData";
 import InfoDetail from "../InfoDetail/InfoDetail";
 import Search from "../Search/Search";
 
 import styles from "./CurrentWeather.module.css";
+import { useTheme } from "@mui/material";
 
 export default function CurrentWeather() {
+  const theme = useTheme();
   return (
-    <div className={styles.container}>
+    <div
+      className={styles.container}
+      style={{ backgroundColor: theme.palette.background.paper }}
+    >
       <Search />
-      <h1>Icon</h1>
+      <ThunderstormIcon />
       <ClimateData
         className={styles.degree}
         firstPart="12"
@@ -28,7 +34,7 @@ export default function CurrentWeather() {
         </div>
       </div>
 
-      <div>
+      <div className={styles.infoDetail}>
         <InfoDetail icon={CloudQueueIcon} text="Patchy Drizzle Day" />
         <InfoDetail icon={AccessTimeIcon} text="16:30" />
       </div>

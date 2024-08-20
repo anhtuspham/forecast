@@ -11,7 +11,7 @@ export default function InfoDetail({ icon: Icon, text }: InfoDetailProps) {
   return (
     <div className={styles.container}>
       <Icon />
-      {text}
+      <h4>{text}</h4>
     </div>
   );
 }
