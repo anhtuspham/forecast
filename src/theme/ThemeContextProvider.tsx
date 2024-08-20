@@ -5,7 +5,7 @@ import {
   StyledEngineProvider,
   ThemeProvider,
 } from "@mui/material";
-import { amber,grey, deepOrange, blueGrey } from "@mui/material/colors";
+import { amber, grey, blueGrey } from "@mui/material/colors";
 
 import { createContext, ReactNode, useMemo, useState } from "react";
 import useMediaQuery from "@mui/material/useMediaQuery";
@@ -37,7 +37,7 @@ export function ThemeContextProvider({ children }: ThemeContext) {
   const getDesignTokens = (mode: PaletteMode) => ({
     palette: {
       mode,
-      ...(mode === 'light'
+      ...(mode === "light"
         ? {
             // palette values for light mode
             primary: grey,
@@ -47,26 +47,25 @@ export function ThemeContextProvider({ children }: ThemeContext) {
               secondary: grey[800],
             },
             background: {
-              default: '#f3f4f6cc',
-              paper: grey[50]
-            }
+              default: "#f3f4f6",
+              paper: grey[50],
+            },
           }
         : {
             // palette values for dark mode
             primary: blueGrey,
             divider: blueGrey[700],
             background: {
-              default: '#000000',
-              paper: '#181818',
+              default: "#000000",
+              paper: "#181818",
             },
             text: {
-              primary: '#fff',
+              primary: "#fff",
               secondary: grey[500],
             },
           }),
     },
   });
-  
 
   const theme = useMemo(() => createTheme(getDesignTokens(mode)), [mode]);
   return (
@@ -77,8 +76,8 @@ export function ThemeContextProvider({ children }: ThemeContext) {
             sx={{
               color: theme.palette.text.primary,
               backgroundColor: theme.palette.background.default,
-              minWidth: '100vw',
-              minHeight: '100vh'
+              minWidth: "100vw",
+              minHeight: "100vh",
             }}
           >
             {children}

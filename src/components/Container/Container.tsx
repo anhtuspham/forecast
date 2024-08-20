@@ -2,10 +2,8 @@ import { ReactNode } from "react";
 
 type Props = {
   children: ReactNode;
-  className?: string;
-  style?: React.CSSProperties
-};
+} & React.HTMLAttributes<HTMLElement>;
 
-export default function Container({ children, className, style }: Props) {
-  return <div style={style} className={className}>{children}</div>;
+export default function Container({ children, ...props }: Props) {
+  return <div {...props}>{children}</div>;
 }

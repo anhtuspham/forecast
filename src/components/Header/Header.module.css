@@ -1,0 +1,16 @@
+.container {
+  display: flex;
+  justify-content: space-between;
+}
+
+.button {
+  padding: 0.4rem 0.8rem;
+  border-radius: 1.5rem;
+  outline: none;
+
+}
+
+.button:focus,
+.button:hover {
+  outline: none;
+}
