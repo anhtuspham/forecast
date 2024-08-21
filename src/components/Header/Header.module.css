@@ -3,14 +3,12 @@
   justify-content: space-between;
 }
 
-.button {
-  padding: 0.4rem 0.8rem;
-  border-radius: 1.5rem;
-  outline: none;
-
+.buttonHeader {
+  display: flex;
+  gap: .8rem;
 }
 
-.button:focus,
-.button:hover {
-  outline: none;
+.githubBtn{
+  display: flex;
+  align-items: center;
 }

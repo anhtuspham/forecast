@@ -1,3 +1,14 @@
 .container {
   display: flex;
+  min-height: 100vh;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+.leftContainer {
+  width: 30%;
+}
+
+.rightContainer {
+  width: 70%;
 }

@@ -1,5 +1,4 @@
 import {
-  Container,
   createTheme,
   PaletteMode,
   StyledEngineProvider,
@@ -71,18 +70,7 @@ export function ThemeContextProvider({ children }: ThemeContext) {
   return (
     <StyledEngineProvider>
       <ThemeContext.Provider value={{ switchColorMode }}>
-        <ThemeProvider theme={theme}>
-          <Container
-            sx={{
-              color: theme.palette.text.primary,
-              backgroundColor: theme.palette.background.default,
-              minWidth: "100vw",
-              minHeight: "100vh",
-            }}
-          >
-            {children}
-          </Container>
-        </ThemeProvider>
+        <ThemeProvider theme={theme}>{children}</ThemeProvider>
       </ThemeContext.Provider>
     </StyledEngineProvider>
   );
