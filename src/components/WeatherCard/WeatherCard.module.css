@@ -1,8 +1,13 @@
 .card {
   display: flex;
   flex-direction: column;
+  box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;
+  padding: 2.25rem 1.5rem;
+  border-radius: 0.5rem;
+  margin-top: 4rem;
+  transition: transform ease .2s;
 }
 
-.card:hover{
-    transform: translateY(15)
+.card:hover {
+  transform: translateY(1rem);
 }

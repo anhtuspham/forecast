@@ -1,22 +1,17 @@
 type ClimateDataProps = {
   firstPart: string;
   secondPart: string;
-  firstPartStyle?: React.CSSProperties;
-  secondPartStyle?: React.CSSProperties;
-  className: string
-};
+} & React.HTMLAttributes<HTMLElement>;
 
 export default function ClimateData({
   firstPart,
   secondPart,
-  firstPartStyle,
-  secondPartStyle,
-  className
+  ...props
 }: ClimateDataProps) {
   return (
-    <div className={className}>
-      <div style={firstPartStyle}>{firstPart}</div>
-      <div style={secondPartStyle}>{secondPart}</div>
+    <div style={{ display: "flex", ...props.style }} {...props}>
+      <div style={{ fontSize: "1em" }}>{firstPart}</div>
+      <div style={{ fontSize: "0.7em" }}>{secondPart}</div>
     </div>
   );
 }

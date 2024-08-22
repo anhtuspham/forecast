@@ -19,11 +19,9 @@ export default function CurrentWeather() {
       <Search />
       <ThunderstormIcon />
       <ClimateData
-        className={styles.degree}
+        style={{display: 'flex', fontSize: '6rem'}}
         firstPart="12"
         secondPart="&#176;C"
-        firstPartStyle={{ fontSize: "6rem" }}
-        secondPartStyle={{ fontSize: "4rem" }}
       />
 
       <div className={styles.locationTimestamp}>
