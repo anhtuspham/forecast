@@ -28,13 +28,6 @@ export default function Forecast() {
         minTemp="30"
         tempSymbol="&#176;C"
       />
-      <WeatherCard
-        dayTime="Tue"
-        icon={AcUnitIcon}
-        maxTemp="35"
-        minTemp="30"
-        tempSymbol="&#176;C"
-      />
     </div>
   );
 }

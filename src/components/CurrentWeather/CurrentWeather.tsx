@@ -7,19 +7,16 @@ import InfoDetail from "../InfoDetail/InfoDetail";
 import Search from "../Search/Search";
 
 import styles from "./CurrentWeather.module.css";
-import { useTheme } from "@mui/material";
 
 export default function CurrentWeather() {
-  const theme = useTheme();
   return (
-    <div
-      className={styles.container}
-      style={{ backgroundColor: theme.palette.background.paper }}
-    >
+    <div className={styles.container}>
       <Search />
-      <ThunderstormIcon />
+      <div className={styles.icon}>
+        <ThunderstormIcon />
+      </div>
       <ClimateData
-        style={{display: 'flex', fontSize: '6rem'}}
+        style={{ display: "flex", fontSize: "6rem" }}
         firstPart="12"
         secondPart="&#176;C"
       />
@@ -27,7 +24,7 @@ export default function CurrentWeather() {
       <div className={styles.locationTimestamp}>
         <h2>Paris</h2>
         <div className={styles.timestamp}>
-          <span>Monday</span>
+          <span style={{ fontWeight: "600" }}>Monday</span>
           <p>, May 3</p>
         </div>
       </div>
