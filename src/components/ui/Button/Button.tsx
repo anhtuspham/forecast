@@ -22,8 +22,7 @@ export default function Button({
       className={styles.button}
       style={{
         backgroundColor: theme.palette.background.paper,
-        color: theme.palette.text.primary,
-        boxShadow: 'rgba(0, 0, 0, 0.24) 0px 3px 8px'
+        color: theme.palette.text.primary
       }}
     >
       {isHaveIcon && Icon ? <Icon /> : text}

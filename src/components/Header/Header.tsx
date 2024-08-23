@@ -7,7 +7,7 @@ import Button from "../ui/Button/Button";
 export default function Header() {
   return (
     <div className={styles.container}>
-      <h2>Forecast</h2>
+      <h2 className={styles.title}>Forecast</h2>
       <div className={styles.buttonHeader}>
         <Button text="&#176;C" />
         <Button text="&#176;F" />

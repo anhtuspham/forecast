@@ -13,7 +13,7 @@ export default function ToggleSwitch() {
 
   return (
     <>
-      <Tooltip title={`Activate ${activateName} Mode`}>
+      <Tooltip title={`${activateName} Mode`}>
         <IconButton
           sx={{ outline: "none", "&:focus": { outline: "none" } }}
           onClick={switchColorMode}
