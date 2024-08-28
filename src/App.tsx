@@ -7,9 +7,27 @@ import OverviewWeather from "./components/OverviewWeather/OverviewWeather";
 import styles from "./App.module.css";
 
 import { useTheme } from "@mui/material";
+import { useEffect, useState } from "react";
 
 function App() {
   const theme = useTheme();
+
+  const [lat, setLat] = useState<number>();
+  const [long, setLong] = useState<number>();
+
+  useEffect(() => {
+    navigator.geolocation.getCurrentPosition((position) => {
+      console.log(
+        position.coords.latitude,
+        position.coords.longitude,
+        position
+      );
+
+      setLat(position.coords.latitude);
+      setLong(position.coords.longitude);
+    });
+  }, []);
+
   return (
     <div>
       <Container className={styles.container}>
@@ -18,7 +36,7 @@ function App() {
           className={styles.leftContainer}
           style={{ backgroundColor: theme.palette.background.paper }}
         >
-          <CurrentWeather />
+          <CurrentWeather data={{latitude: lat, longitude: long}}/>
         </Container>
 
         {/* right container */}

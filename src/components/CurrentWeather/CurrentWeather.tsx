@@ -6,9 +6,11 @@ import ClimateData from "../ClimateData/ClimateData";
 import InfoDetail from "../InfoDetail/InfoDetail";
 import Search from "../Search/Search";
 
+import { WeatherType } from "../../api/Types";
+
 import styles from "./CurrentWeather.module.css";
 
-export default function CurrentWeather() {
+export default function CurrentWeather({ data }: WeatherType) {
   return (
     <div className={styles.container}>
       <Search />
@@ -18,7 +20,7 @@ export default function CurrentWeather() {
       <ClimateData
         style={{ display: "flex", fontSize: "6rem" }}
         firstPart="12"
-        secondPart="&#176;C"
+        secondPart="&deg;C"
       />
 
       <div className={styles.locationTimestamp}>
@@ -27,6 +29,11 @@ export default function CurrentWeather() {
           <span style={{ fontWeight: "600" }}>Monday</span>
           <p>, May 3</p>
         </div>
+      </div>
+
+      <div>
+        <h1>{data.latitude}</h1>
+        <h2>{data.longitude}</h2>
       </div>
 
       <div className={styles.infoDetail}>
