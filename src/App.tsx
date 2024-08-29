@@ -17,26 +17,19 @@ function App() {
 
   useEffect(() => {
     navigator.geolocation.getCurrentPosition((position) => {
-      console.log(
-        position.coords.latitude,
-        position.coords.longitude,
-        position
-      );
-
       setLat(position.coords.latitude);
       setLong(position.coords.longitude);
     });
-  }, []);
+  }, [lat, long]);
 
   return (
-    <div>
-      <Container className={styles.container}>
+    <Container className={styles.container}>
         {/* left container */}
         <Container
           className={styles.leftContainer}
           style={{ backgroundColor: theme.palette.background.paper }}
         >
-          <CurrentWeather data={{latitude: lat, longitude: long}}/>
+          <CurrentWeather data={{ latitude: lat, longitude: long }} />
         </Container>
 
         {/* right container */}
@@ -46,7 +39,6 @@ function App() {
           <OverviewWeather />
         </Container>
       </Container>
-    </div>
   );
 }
 
