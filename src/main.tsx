@@ -4,15 +4,15 @@ import App from "./App.tsx";
 
 import "./index.css";
 
-import { ThemeContextProvider } from "./theme/ThemeContextProvider.tsx";
-import WrapperContainer from "./theme/WrapperContainer.tsx";
+import { ThemeContextProvider } from "./context/ThemeContextProvider.tsx";
+import { LocationContextProvider } from "./context/LocationContextProvider.tsx";
 
 createRoot(document.getElementById("root")!).render(
   <StrictMode>
     <ThemeContextProvider>
-      <WrapperContainer>
+      <LocationContextProvider>
         <App />
-      </WrapperContainer>
+      </LocationContextProvider>
     </ThemeContextProvider>
   </StrictMode>
 );

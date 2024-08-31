@@ -1,7 +1,7 @@
 import { DarkModeOutlined, LightModeOutlined } from "@mui/icons-material";
 import { IconButton, Tooltip, useTheme } from "@mui/material";
 import { useContext, useMemo } from "react";
-import { ThemeContext } from "../../../theme/ThemeContextProvider";
+import { ThemeContext } from "../../../context/ThemeContextProvider";
 
 export default function ToggleSwitch() {
   const theme = useTheme();
