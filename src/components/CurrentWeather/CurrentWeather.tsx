@@ -6,11 +6,19 @@ import ClimateData from "../ClimateData/ClimateData";
 import InfoDetail from "../InfoDetail/InfoDetail";
 import Search from "../Search/Search";
 
-import { WeatherType } from "../../api/Types";
+import { WeatherType } from "../../api/types";
 
 import styles from "./CurrentWeather.module.css";
 
 export default function CurrentWeather({ data }: WeatherType) {
+  function isCityWithCoordinates(
+    city: string | { latitude: number; longitude: number }
+  ): city is { latitude: number; longitude: number } {
+    return (
+      typeof city === "object" && "latitude" in city && "longitude" in city
+    );
+  }
+  // const {longitude, latitude} = data.city as {latitude: number, longitude: number}
   return (
     <div className={styles.container}>
       <Search />
@@ -23,17 +31,19 @@ export default function CurrentWeather({ data }: WeatherType) {
         secondPart="&deg;C"
       />
 
+      {isCityWithCoordinates(data.city) && (
+        <div>
+          <h1>{data.city.longitude}</h1>
+          <h2>{data.city.latitude}</h2>
+        </div>
+      )}
+
       <div className={styles.locationTimestamp}>
         <h2>Paris</h2>
         <div className={styles.timestamp}>
           <span style={{ fontWeight: "600" }}>Monday</span>
           <p>, May 3</p>
         </div>
-      </div>
-
-      <div>
-        <h1>{data.latitude}</h1>
-        <h2>{data.longitude}</h2>
       </div>
 
       <div className={styles.infoDetail}>

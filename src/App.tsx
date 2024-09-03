@@ -12,25 +12,39 @@ import { LocationContext } from "./context/LocationContextProvider";
 
 function App() {
   const theme = useTheme();
-  const {location} = useContext(LocationContext)
+  const { location } = useContext(LocationContext);
+
+  console.log(
+    "process.env.REACT_APP_WEATHER_API_KEY",
+    process.env.REACT_APP_WEATHER_API_KEY
+  );
 
   return (
     <Container className={styles.container}>
-        {/* left container */}
-        <Container
-          className={styles.leftContainer}
-          style={{ backgroundColor: theme.palette.background.paper }}
-        >
-          <CurrentWeather data={{ latitude: location?.latitude, longitude: location?.longitude }} />
-        </Container>
-
-        {/* right container */}
-        <Container className={styles.rightContainer}>
-          <Header />
-          <Forecast />
-          <OverviewWeather />
-        </Container>
+      {/* left container */}
+      <Container
+        className={styles.leftContainer}
+        style={{ backgroundColor: theme.palette.background.paper }}
+      >
+        {location && (
+          <CurrentWeather
+            data={{
+              city: {
+                longitude: location.longitude,
+                latitude: location.latitude,
+              },
+            }}
+          />
+        )}
       </Container>
+
+      {/* right container */}
+      <Container className={styles.rightContainer}>
+        <Header />
+        <Forecast />
+        <OverviewWeather />
+      </Container>
+    </Container>
   );
 }
 
