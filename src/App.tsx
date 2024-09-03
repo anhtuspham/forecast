@@ -9,15 +9,14 @@ import styles from "./App.module.css";
 import { useTheme } from "@mui/material";
 import { useContext } from "react";
 import { LocationContext } from "./context/LocationContextProvider";
+import { fetchWeatherData } from "./api/weather";
 
 function App() {
   const theme = useTheme();
   const { location } = useContext(LocationContext);
 
-  console.log(
-    "process.env.REACT_APP_WEATHER_API_KEY",
-    process.env.REACT_APP_WEATHER_API_KEY
-  );
+  console.log('data', fetchWeatherData());
+  
 
   return (
     <Container className={styles.container}>

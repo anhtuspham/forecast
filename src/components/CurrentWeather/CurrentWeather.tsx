@@ -6,11 +6,11 @@ import ClimateData from "../ClimateData/ClimateData";
 import InfoDetail from "../InfoDetail/InfoDetail";
 import Search from "../Search/Search";
 
-import { WeatherType } from "../../api/types";
+import { LocationType } from "../../api/types";
 
 import styles from "./CurrentWeather.module.css";
 
-export default function CurrentWeather({ data }: WeatherType) {
+export default function CurrentWeather({ data }: LocationType) {
   function isCityWithCoordinates(
     city: string | { latitude: number; longitude: number }
   ): city is { latitude: number; longitude: number } {
