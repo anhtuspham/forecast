@@ -1,4 +1,4 @@
-import { WeatherType } from "./Types";
+import { WeatherType } from "./types";
 
 export async function fetchWeatherData(
   typeAPI: string,
