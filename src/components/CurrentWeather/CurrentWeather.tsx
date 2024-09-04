@@ -1,6 +1,6 @@
 import CloudQueueIcon from "@mui/icons-material/CloudQueue";
 import AccessTimeIcon from "@mui/icons-material/AccessTime";
-import ThunderstormIcon from "@mui/icons-material/Thunderstorm";
+// import ThunderstormIcon from "@mui/icons-material/Thunderstorm";
 
 import ClimateData from "../ClimateData/ClimateData";
 import InfoDetail from "../InfoDetail/InfoDetail";
@@ -11,7 +11,11 @@ import { WeatherType } from "../../api/types";
 import styles from "./CurrentWeather.module.css";
 import { extractDateInfo } from "../../utils/getTime";
 
-export default function CurrentWeather({ data }: { data: WeatherType }) {
+interface Props {
+  data: WeatherType
+}
+
+export default function CurrentWeather({ data }: Props) {
   console.log(data);
   return (
     <div className={styles.container}>

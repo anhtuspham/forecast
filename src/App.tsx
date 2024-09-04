@@ -17,6 +17,9 @@ function App() {
   const { location } = useContext(LocationContext);
 
   const [weatherData, setWeatherData] = useState<WeatherType | null>(null);
+  const [additionalData, setAdditionalData] = useState<WeatherType | null>(
+    null
+  );
   const [isLoading, setIsLoading] = useState<boolean>(false);
 
   // fetch weather api in current location
@@ -29,8 +32,12 @@ function App() {
             lat: location.latitude,
             long: location.longitude,
           });
+          const additional = await fetchWeatherData("astronomy.json", {
+            lat: location.latitude,
+            long: location.longitude,
+          });
           setWeatherData(data);
-          
+          setAdditionalData(additional);
         } catch (error) {
           console.error("Error when loading", error);
         } finally {
@@ -56,14 +63,14 @@ function App() {
         className={styles.leftContainer}
         style={{ backgroundColor: theme.palette.background.paper }}
       >
-        <CurrentWeather data={weatherData}/>
+        <CurrentWeather data={weatherData} />
       </Container>
 
       {/* right container */}
       <Container className={styles.rightContainer}>
         <Header />
         <Forecast />
-        <OverviewWeather />
+        <OverviewWeather data={weatherData} addData={additionalData} />
       </Container>
     </Container>
   );

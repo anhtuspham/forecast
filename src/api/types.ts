@@ -77,14 +77,16 @@ export type WeatherType = {
     vis_km: number;
     uv: number;
     air_quality: {
-      us_index: number;
-      uk_index: number;
+      ['us-epa-index']: number;
+      ['gb-defra-index']: number;
     };
   };
   astronomy: {
-    sunrise: string;
-    sunset: string;
-    moonrise: string;
-    moonset: string;
+    astro: {
+      sunrise: string;
+      sunset: string;
+      moonrise: string;
+      moonset: string;
+    };
   };
 };

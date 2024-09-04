@@ -11,7 +11,7 @@ export default function ClimateData({
   return (
     <div style={{ display: "flex", ...props.style }} {...props}>
       <div style={{ fontSize: "1em" }}>{firstPart}</div>
-      <div style={{ fontSize: "0.7em" }}>{secondPart}</div>
+      <div style={{ fontSize: "0.55em" }}>{secondPart}</div>
     </div>
   );
 }
