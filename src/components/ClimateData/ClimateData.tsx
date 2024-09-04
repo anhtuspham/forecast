@@ -1,5 +1,5 @@
 type ClimateDataProps = {
-  firstPart: string;
+  firstPart: string | number;
   secondPart: string;
 } & React.HTMLAttributes<HTMLElement>;
 

@@ -7,16 +7,47 @@ import OverviewWeather from "./components/OverviewWeather/OverviewWeather";
 import styles from "./App.module.css";
 
 import { useTheme } from "@mui/material";
-import { useContext } from "react";
+import { useContext, useEffect, useState } from "react";
 import { LocationContext } from "./context/LocationContextProvider";
 import { fetchWeatherData } from "./api/weather";
+import { WeatherType } from "./api/types";
 
 function App() {
   const theme = useTheme();
   const { location } = useContext(LocationContext);
 
-  console.log('data', fetchWeatherData());
-  
+  const [weatherData, setWeatherData] = useState<WeatherType | null>(null);
+  const [isLoading, setIsLoading] = useState<boolean>(false);
+
+  // fetch weather api in current location
+  useEffect(() => {
+    const fetchData = async () => {
+      if (location) {
+        try {
+          setIsLoading(true);
+          const data = await fetchWeatherData("current.json", {
+            lat: location.latitude,
+            long: location.longitude,
+          });
+          setWeatherData(data);
+          
+        } catch (error) {
+          console.error("Error when loading", error);
+        } finally {
+          setIsLoading(false);
+        }
+      }
+    };
+    fetchData();
+  }, [location]);
+
+  if (isLoading) {
+    return <div>...Loading</div>;
+  }
+
+  if (!weatherData) {
+    return <div>No data available</div>;
+  }
 
   return (
     <Container className={styles.container}>
@@ -25,16 +56,7 @@ function App() {
         className={styles.leftContainer}
         style={{ backgroundColor: theme.palette.background.paper }}
       >
-        {location && (
-          <CurrentWeather
-            data={{
-              city: {
-                longitude: location.longitude,
-                latitude: location.latitude,
-              },
-            }}
-          />
-        )}
+        <CurrentWeather data={weatherData}/>
       </Container>
 
       {/* right container */}
