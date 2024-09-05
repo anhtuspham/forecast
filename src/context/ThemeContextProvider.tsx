@@ -25,8 +25,11 @@ export function ThemeContextProvider({ children }: ThemeContext) {
   // if the current system is in dark mode, it return true
   const isDarkMode = useMediaQuery("(prefer-color-scheme: dark)");
 
+  console.log('is Dark mode', isDarkMode);
+  
+
   const [mode, setMode] = useState<"light" | "dark">(
-    isDarkMode ? "dark" : "light"
+    isDarkMode ? "light" : "dark"
   );
 
   const switchColorMode = () => {
@@ -55,8 +58,8 @@ export function ThemeContextProvider({ children }: ThemeContext) {
             primary: blueGrey,
             divider: blueGrey[700],
             background: {
-              default: "#000000",
-              paper: "#181818",
+              default: "#181818",
+              paper: "#212020",
             },
             text: {
               primary: "#fff",

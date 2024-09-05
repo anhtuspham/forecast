@@ -3,10 +3,11 @@ import InfoDetail from "../InfoDetail/InfoDetail";
 import OverviewCard from "../OverviewCard/OverviewCard";
 
 import WbSunnyIcon from "@mui/icons-material/WbSunny";
-import DarkModeOutlinedIcon from '@mui/icons-material/DarkModeOutlined';
+import DarkMode from "@mui/icons-material/DarkMode";
 
 import styles from "./OverviewWeather.module.css";
 import ClimateData from "../ClimateData/ClimateData";
+import { useTheme } from "@mui/material";
 
 interface Props {
   addData: WeatherType;
@@ -14,6 +15,7 @@ interface Props {
 }
 
 export default function OverviewWeather({ data, addData }: Props) {
+  const theme = useTheme();
 
   return (
     <div className={styles.container}>
@@ -27,13 +29,21 @@ export default function OverviewWeather({ data, addData }: Props) {
 
         <OverviewCard title="Sunrise & Sunset">
           <InfoDetail
-            colorIcon="rgba(221, 255, 0, 1)"
+            colorIcon={
+              theme.palette.mode === "dark"
+                ? "rgba(221, 255, 0, 1)"
+                : "rgba(254, 16, 16, 0.8)"
+            }
             icon={WbSunnyIcon}
             text={addData.astronomy.astro.sunrise}
           />{" "}
           <InfoDetail
-            colorIcon="rgba(221, 255, 0, 1)"
-            icon={DarkModeOutlinedIcon}
+            colorIcon={
+              theme.palette.mode === "dark"
+                ? "rgba(221, 255, 0, 1)"
+                : "rgba(254, 16, 16, 0.8)"
+            }
+            icon={DarkMode}
             text={addData.astronomy.astro.sunset}
           />
         </OverviewCard>

@@ -12,22 +12,24 @@ import styles from "./CurrentWeather.module.css";
 import { extractDateInfo } from "../../utils/getTime";
 
 interface Props {
-  data: WeatherType
+  data: WeatherType;
 }
 
 export default function CurrentWeather({ data }: Props) {
-  console.log(data);
   return (
     <div className={styles.container}>
       <Search />
-      <div className={styles.icon}>
-        <img src={data.current.condition.icon} />
+
+      <div className={styles.currentCondition}>
+        <div className={styles.icon}>
+          <img src={data.current.condition.icon} />
+        </div>
+        <ClimateData
+          style={{ display: "flex", fontSize: "5.5rem" }}
+          firstPart={data.current.temp_c}
+          secondPart="&deg;C"
+        />
       </div>
-      <ClimateData
-        style={{ display: "flex", fontSize: "6rem" }}
-        firstPart={data.current.temp_c}
-        secondPart="&deg;C"
-      />
 
       <div className={styles.locationTimestamp}>
         <h2>{data.location.name}</h2>
@@ -44,7 +46,10 @@ export default function CurrentWeather({ data }: Props) {
 
       <div className={styles.infoDetail}>
         <InfoDetail icon={CloudQueueIcon} text={data.current.condition.text} />
-        <InfoDetail icon={AccessTimeIcon} text={extractDateInfo(data.location.localtime).time} />
+        <InfoDetail
+          icon={AccessTimeIcon}
+          text={extractDateInfo(data.location.localtime).time}
+        />
       </div>
 
       <div></div>

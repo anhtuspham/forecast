@@ -1,7 +1,7 @@
 .inputContainer {
   display: flex;
   border-radius: 18px;
-  padding: 8px;
+  padding: .6rem;
   background-color: var(--default-background-color);
 }
 
@@ -12,6 +12,7 @@
   color: rgb(0, 0, 0);
   width: 100%;
   margin-left: .5rem;
+  font-size: 1.3rem;
 }
 
 .input::placeholder {

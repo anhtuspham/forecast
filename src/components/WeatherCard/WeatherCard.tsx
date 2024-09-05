@@ -1,5 +1,3 @@
-import { SvgIconComponent } from "@mui/icons-material";
-
 import styles from "./WeatherCard.module.css";
 import ClimateData from "../ClimateData/ClimateData";
 import { useTheme } from "@mui/material";
@@ -33,7 +31,7 @@ export default function WeatherCard({
 
       <div style={{ display: "flex", gap: '.2rem' }}>
         <ClimateData
-          style={{ display: "flex", fontWeight: '600' }}
+          style={{ display: "flex", fontWeight: '700' }}
           firstPart={maxTemp}
           secondPart={tempSymbol}
         />{" "}
