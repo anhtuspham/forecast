@@ -6,7 +6,7 @@ import {
 } from "@mui/material";
 import { amber, grey, blueGrey } from "@mui/material/colors";
 
-import { createContext, ReactNode, useMemo, useState } from "react";
+import { createContext, ReactNode, useEffect, useMemo, useState } from "react";
 import useMediaQuery from "@mui/material/useMediaQuery";
 
 type ThemeContext = {
@@ -23,13 +23,14 @@ export const ThemeContext = createContext<ThemeContextProps>({
 
 export function ThemeContextProvider({ children }: ThemeContext) {
   // if the current system is in dark mode, it return true
-  const isDarkMode = useMediaQuery("(prefer-color-scheme: dark)");
+  const prefersDarkMode = useMediaQuery("(prefers-color-scheme: dark)");
 
-  console.log('is Dark mode', isDarkMode);
-  
+  useEffect(() => {
+    setMode(prefersDarkMode ? "dark" : "light");
+  }, [prefersDarkMode]);
 
   const [mode, setMode] = useState<"light" | "dark">(
-    isDarkMode ? "light" : "dark"
+    prefersDarkMode ? "dark" : "light"
   );
 
   const switchColorMode = () => {
