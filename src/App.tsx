@@ -9,8 +9,8 @@ import styles from "./App.module.css";
 import { useTheme } from "@mui/material";
 import { useContext, useEffect, useState } from "react";
 import { LocationContext } from "./context/LocationContextProvider";
-import { fetchWeatherData } from "./api/weather";
-import { WeatherType } from "./api/types";
+import { fetchForecastWeatherData, fetchWeatherData } from "./api/weather";
+import { ForecastWeatherType, WeatherType } from "./api/types";
 
 function App() {
   const theme = useTheme();
@@ -18,6 +18,9 @@ function App() {
 
   const [weatherData, setWeatherData] = useState<WeatherType | null>(null);
   const [additionalData, setAdditionalData] = useState<WeatherType | null>(
+    null
+  );
+  const [futureData, setFutureData] = useState<ForecastWeatherType | null>(
     null
   );
   const [isLoading, setIsLoading] = useState<boolean>(false);
@@ -36,8 +39,14 @@ function App() {
             lat: location.latitude,
             long: location.longitude,
           });
+          const future = await fetchForecastWeatherData({
+            lat: location.latitude,
+            long: location.longitude,
+          });
+
           setWeatherData(data);
           setAdditionalData(additional);
+          setFutureData(future);
         } catch (error) {
           console.error("Error when loading", error);
         } finally {
@@ -52,7 +61,7 @@ function App() {
     return <div>...Loading</div>;
   }
 
-  if (!weatherData) {
+  if (!weatherData || !additionalData || !futureData) {
     return <div>No data available</div>;
   }
 
@@ -69,7 +78,7 @@ function App() {
       {/* right container */}
       <Container className={styles.rightContainer}>
         <Header />
-        <Forecast />
+        <Forecast data={futureData} />
         <OverviewWeather data={weatherData} addData={additionalData} />
       </Container>
     </Container>

@@ -3,7 +3,7 @@ import InfoDetail from "../InfoDetail/InfoDetail";
 import OverviewCard from "../OverviewCard/OverviewCard";
 
 import WbSunnyIcon from "@mui/icons-material/WbSunny";
-import DarkModeIcon from "@mui/icons-material/DarkMode";
+import DarkModeOutlinedIcon from '@mui/icons-material/DarkModeOutlined';
 
 import styles from "./OverviewWeather.module.css";
 import ClimateData from "../ClimateData/ClimateData";
@@ -14,7 +14,6 @@ interface Props {
 }
 
 export default function OverviewWeather({ data, addData }: Props) {
-  console.log("addData: ", data.current.air_quality["us-epa-index"]);
 
   return (
     <div className={styles.container}>
@@ -34,7 +33,7 @@ export default function OverviewWeather({ data, addData }: Props) {
           />{" "}
           <InfoDetail
             colorIcon="rgba(221, 255, 0, 1)"
-            icon={DarkModeIcon}
+            icon={DarkModeOutlinedIcon}
             text={addData.astronomy.astro.sunset}
           />
         </OverviewCard>

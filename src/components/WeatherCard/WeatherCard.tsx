@@ -6,15 +6,15 @@ import { useTheme } from "@mui/material";
 
 type WeatherCardProps = {
   dayTime: string;
-  icon: SvgIconComponent;
-  maxTemp: string;
-  minTemp: string;
+  icon: string;
+  maxTemp: number;
+  minTemp: number;
   tempSymbol: string;
 };
 
 export default function WeatherCard({
   dayTime,
-  icon: Icon,
+  icon,
   maxTemp,
   minTemp,
   tempSymbol,
@@ -28,7 +28,7 @@ export default function WeatherCard({
       <p>{dayTime}</p>
 
       <div className={styles.icon}>
-        <Icon />
+        <img src={icon}/>
       </div>
 
       <div style={{ display: "flex", gap: '.2rem' }}>
