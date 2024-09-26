@@ -21,6 +21,7 @@ export const LocationContext = createContext<{
 export function LocationContextProvider({ children }: LocationContextProps) {
   const theme = useTheme();
   const [location, setLocation] = useState<LocationType | null>(null);
+  const [isCelsiusDegree, setIsCelsiusDegree] = useState<boolean>(true);
 
   useEffect(() => {
     if (navigator.geolocation) {

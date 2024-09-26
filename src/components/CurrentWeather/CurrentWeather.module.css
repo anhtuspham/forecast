@@ -41,4 +41,7 @@
 
 .currentCondition{
   margin: 4rem 2rem;
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
 }
