@@ -1,7 +1,9 @@
+import { useContext } from "react";
 
 import WeatherCard from "../WeatherCard/WeatherCard";
 import { ForecastWeatherType } from "../../api/types";
 import { extractDateInfo } from "../../utils/getTime";
+import { WeatherContext } from "../../context/WeatherContextProvider";
 
 import styles from "./Forecast.module.css";
 
@@ -10,7 +12,8 @@ interface Props {
 }
 
 export default function Forecast({ data }: Props) {
-  console.log("data in forecast: ", data.forecast.forecastday.length);
+  console.log("data in forecast: ", data.forecast);
+  const { currentUnitDegree, isCelsiusDegree } = useContext(WeatherContext);
 
   return (
     <div className={styles.forecastList}>
@@ -19,9 +22,17 @@ export default function Forecast({ data }: Props) {
           <WeatherCard
             dayTime={extractDateInfo(dayInForecast.date).day}
             icon={dayInForecast.day.condition.icon}
-            maxTemp={dayInForecast.day.maxtemp_c}
-            minTemp={dayInForecast.day.mintemp_c}
-            tempSymbol="&#176;C"
+            maxTemp={
+              isCelsiusDegree
+                ? dayInForecast.day.maxtemp_c
+                : dayInForecast.day.maxtemp_f
+            }
+            minTemp={
+              isCelsiusDegree
+                ? dayInForecast.day.mintemp_c
+                : dayInForecast.day.mintemp_f
+            }
+            tempSymbol={currentUnitDegree}
           />
         </div>
       ))}

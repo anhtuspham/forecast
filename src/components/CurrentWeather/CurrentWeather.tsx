@@ -1,21 +1,25 @@
+import { useContext } from "react";
+
+import styles from "./CurrentWeather.module.css";
+
 import CloudQueueIcon from "@mui/icons-material/CloudQueue";
 import AccessTimeIcon from "@mui/icons-material/AccessTime";
-// import ThunderstormIcon from "@mui/icons-material/Thunderstorm";
 
 import ClimateData from "../ClimateData/ClimateData";
 import InfoDetail from "../InfoDetail/InfoDetail";
 import Search from "../Search/Search";
 
 import { WeatherType } from "../../api/types";
-
-import styles from "./CurrentWeather.module.css";
 import { extractDateInfo } from "../../utils/getTime";
+import { WeatherContext } from "../../context/WeatherContextProvider";
+import { celToFah } from "../../utils/degree";
 
 interface Props {
   data: WeatherType;
 }
 
 export default function CurrentWeather({ data }: Props) {
+  const { currentUnitDegree, isCelsiusDegree } = useContext(WeatherContext);
   return (
     <div className={styles.container}>
       <Search />
@@ -26,8 +30,12 @@ export default function CurrentWeather({ data }: Props) {
         </div>
         <ClimateData
           style={{ display: "flex", fontSize: "5.5rem" }}
-          firstPart={data.current.temp_c}
-          secondPart="&deg;C"
+          firstPart={
+            isCelsiusDegree
+              ? data.current.temp_c
+              : celToFah(data.current.temp_c)
+          }
+          secondPart={currentUnitDegree}
         />
       </div>
 

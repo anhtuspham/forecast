@@ -1,7 +1,7 @@
 import { useTheme } from "@mui/material";
 import { createContext, ReactNode, useEffect, useState } from "react";
 
-type LocationContextProps = {
+type WeatherContextProps = {
   children: ReactNode;
 };
 
@@ -10,18 +10,30 @@ type LocationType = {
   longitude: number;
 };
 
-export const LocationContext = createContext<{
+export const WeatherContext = createContext<{
   location: LocationType | null;
   setLocation: React.Dispatch<React.SetStateAction<LocationType | null>>;
+  handleSwitchDegreeUnit: () => void;
+  isCelsiusDegree: boolean;
+  currentUnitDegree: string;
 }>({
   location: null,
   setLocation: () => {},
+  handleSwitchDegreeUnit: () => {},
+  isCelsiusDegree: true,
+  currentUnitDegree: "°C",
 });
 
-export function LocationContextProvider({ children }: LocationContextProps) {
+export function WeatherContextProvider({ children }: WeatherContextProps) {
   const theme = useTheme();
   const [location, setLocation] = useState<LocationType | null>(null);
   const [isCelsiusDegree, setIsCelsiusDegree] = useState<boolean>(true);
+
+  const handleSwitchDegreeUnit = () => {
+    setIsCelsiusDegree((prevIsCelsiusDegree) => !prevIsCelsiusDegree);
+  };
+
+  const currentUnitDegree = isCelsiusDegree ? "°C" : "°F";
 
   useEffect(() => {
     if (navigator.geolocation) {
@@ -40,7 +52,15 @@ export function LocationContextProvider({ children }: LocationContextProps) {
   }, []);
 
   return (
-    <LocationContext.Provider value={{ location, setLocation }}>
+    <WeatherContext.Provider
+      value={{
+        location,
+        setLocation,
+        handleSwitchDegreeUnit,
+        isCelsiusDegree,
+        currentUnitDegree,
+      }}
+    >
       <div
         style={{
           color: theme.palette.text.primary,
@@ -49,6 +69,6 @@ export function LocationContextProvider({ children }: LocationContextProps) {
       >
         {children}
       </div>
-    </LocationContext.Provider>
+    </WeatherContext.Provider>
   );
 }

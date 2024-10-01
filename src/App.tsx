@@ -8,13 +8,13 @@ import styles from "./App.module.css";
 
 import { useTheme } from "@mui/material";
 import { useContext, useEffect, useState } from "react";
-import { LocationContext } from "./context/LocationContextProvider";
+import { WeatherContext } from "./context/WeatherContextProvider";
 import { fetchForecastWeatherData, fetchWeatherData } from "./api/weather";
 import { ForecastWeatherType, WeatherType } from "./api/types";
 
 function App() {
   const theme = useTheme();
-  const { location } = useContext(LocationContext);
+  const { location } = useContext(WeatherContext);
 
   const [weatherData, setWeatherData] = useState<WeatherType | null>(null);
   const [additionalData, setAdditionalData] = useState<WeatherType | null>(
@@ -26,6 +26,7 @@ function App() {
   const [isLoading, setIsLoading] = useState<boolean>(false);
 
   // fetch weather api in current location
+
   useEffect(() => {
     const fetchData = async () => {
       if (location) {

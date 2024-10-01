@@ -5,14 +5,14 @@ import App from "./App.tsx";
 import "./index.css";
 
 import { ThemeContextProvider } from "./context/ThemeContextProvider.tsx";
-import { LocationContextProvider } from "./context/LocationContextProvider.tsx";
+import { WeatherContextProvider } from "./context/WeatherContextProvider.tsx";
 
 createRoot(document.getElementById("root")!).render(
   <StrictMode>
     <ThemeContextProvider>
-      <LocationContextProvider>
+      <WeatherContextProvider>
         <App />
-      </LocationContextProvider>
+      </WeatherContextProvider>
     </ThemeContextProvider>
   </StrictMode>
 );

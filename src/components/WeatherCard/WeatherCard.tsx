@@ -26,18 +26,18 @@ export default function WeatherCard({
       <p>{dayTime}</p>
 
       <div className={styles.icon}>
-        <img src={icon}/>
+        <img src={icon} />
       </div>
 
-      <div style={{ display: "flex", gap: '.2rem' }}>
+      <div className={styles.weatherText}>
         <ClimateData
-          style={{ display: "flex", fontWeight: '700' }}
+          style={{ display: "flex", fontWeight: "700" }}
           firstPart={maxTemp}
           secondPart={tempSymbol}
         />{" "}
         /
         <ClimateData
-          style={{ display: "flex"}}
+          style={{ display: "flex" }}
           firstPart={minTemp}
           secondPart={tempSymbol}
         />
