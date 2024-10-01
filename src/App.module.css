@@ -5,7 +5,8 @@
   margin-right: auto;
   width: 100%;
   max-width: 100rem;
-  /* overflow-x: hidden; */
+  overflow-x: hidden;
+  overflow-y: auto;
 }
 
 .leftContainer {
@@ -16,4 +17,18 @@
 .rightContainer {
   width: 70%;
   padding: 1rem 3rem;
+}
+
+@media (max-width: 1024px) {
+  .leftContainer,
+  .rightContainer {
+    font-size: 0.7rem;
+  }
+
+  .leftContainer {
+    padding: 1rem 1.5rem;
+  }
+  .rightContainer {
+    padding: 1rem 2rem;
+  }
 }

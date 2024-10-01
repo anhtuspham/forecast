@@ -29,7 +29,7 @@ export default function CurrentWeather({ data }: Props) {
           <img src={data.current.condition.icon} />
         </div>
         <ClimateData
-          style={{ display: "flex", fontSize: "5.5rem" }}
+          className={styles.currentDegreeText}
           firstPart={
             isCelsiusDegree
               ? data.current.temp_c

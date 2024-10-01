@@ -27,21 +27,34 @@
   margin-top: 1rem;
   display: flex;
   flex-direction: column;
-  gap: .5rem
+  gap: 0.5rem;
 }
 
 .icon img {
   height: 7rem;
 }
 
-.icon svg {
-  width: 100%;
-  height: 100%;
-}
-
-.currentCondition{
+.currentCondition {
   margin: 4rem 2rem;
   display: flex;
+  gap: 0.5rem;
   justify-content: space-around;
   align-items: center;
+}
+
+.currentDegreeText {
+  font-size: 5.5rem;
+}
+
+@media (max-width: 1024px) {
+  .icon img {
+    height: 5rem;
+  }
+  .currentCondition {
+    margin: 3rem 1rem;
+    gap: 0.25rem;
+  }
+  .currentDegreeText {
+    font-size: 3rem;
+  }
 }

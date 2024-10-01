@@ -4,3 +4,11 @@
   margin-top: 4rem;
   justify-content: center;
 }
+
+@media (max-width: 1024px) {
+  .forecastList {
+    width: 100%;
+    overflow-x: auto;
+    overflow-y: hidden;
+  }
+}
