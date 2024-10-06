@@ -18,8 +18,11 @@
 }
 
 @media (max-width: 768px) {
+  .container {
+    padding: 1rem;
+  }
   .overviewContainer {
     grid-template-columns: 1fr;
-    grid-template-rows: audio;
+    grid-template-rows: auto;
   }
 }

@@ -3,17 +3,17 @@
   justify-content: space-between;
 }
 
-.title{
+.title {
   text-transform: uppercase;
   font-weight: 700;
 }
 
 .buttonHeader {
   display: flex;
-  gap: .8rem;
+  gap: 0.8rem;
 }
 
-.githubBtn{
+.githubBtn {
   display: flex;
   align-items: center;
 }

@@ -78,9 +78,12 @@ function App() {
 
       {/* right container */}
       <Container className={styles.rightContainer}>
-        <Header />
-        <Forecast data={futureData} />
-        <OverviewWeather data={weatherData} addData={additionalData} />
+        {/* content in right  */}
+        <Container className={styles.contentRightContainer}>
+          <Header />
+          <Forecast data={futureData} />
+          <OverviewWeather data={weatherData} addData={additionalData} />
+        </Container>
       </Container>
     </Container>
   );

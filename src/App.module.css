@@ -22,13 +22,29 @@
 @media (max-width: 1024px) {
   .leftContainer,
   .rightContainer {
-    font-size: 0.7rem;
+    font-size: 0.9rem;
   }
 
   .leftContainer {
     padding: 1rem 1.5rem;
   }
   .rightContainer {
-    padding: 1rem 2rem;
+    padding: 1rem 1.5rem;
+    overflow-x: auto;
+    overflow-y: hidden;
+  }
+}
+
+@media (max-width: 768px) {
+  .container {
+    display: block;
+  }
+  .leftContainer,
+  .rightContainer {
+    width: 100%;
+    padding: 0;
+  }
+  .contentRightContainer {
+    padding: 1rem;
   }
 }

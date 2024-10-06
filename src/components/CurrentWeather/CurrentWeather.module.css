@@ -38,12 +38,18 @@
   margin: 4rem 2rem;
   display: flex;
   gap: 0.5rem;
-  justify-content: space-around;
+  justify-content: center;
   align-items: center;
 }
 
 .currentDegreeText {
   font-size: 5.5rem;
+}
+
+@media (max-width: 1444px) {
+  .currentDegreeText {
+    font-size: 4.5rem;
+  }
 }
 
 @media (max-width: 1024px) {
@@ -56,5 +62,11 @@
   }
   .currentDegreeText {
     font-size: 3rem;
+  }
+}
+
+@media (max-width: 768px) {
+  .container {
+    padding: 1rem 1.5rem;
   }
 }

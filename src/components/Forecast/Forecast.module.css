@@ -2,13 +2,20 @@
   display: flex;
   gap: 1rem;
   margin-top: 4rem;
+  padding-bottom: 1.5rem;
   justify-content: center;
 }
 
 @media (max-width: 1024px) {
   .forecastList {
-    width: 100%;
     overflow-x: auto;
     overflow-y: hidden;
+    -ms-overflow-style: none;
+    scrollbar-width: none;
+    justify-content: space-evenly;
+  }
+
+  .forecastList::-webkit-scrollbar {
+    display: none;
   }
 }
