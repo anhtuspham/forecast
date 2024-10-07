@@ -28,6 +28,7 @@ export default function CurrentWeather({ data }: Props) {
         <div className={styles.icon}>
           <img src={data.current.condition.icon} />
         </div>
+
         <ClimateData
           className={styles.currentDegreeText}
           firstPart={
@@ -41,6 +42,7 @@ export default function CurrentWeather({ data }: Props) {
 
       <div className={styles.locationTimestamp}>
         <h2>{data.location.name}</h2>
+
         <div className={styles.timestamp}>
           <span style={{ fontWeight: "600" }}>
             {extractDateInfo(data.location.localtime).day}

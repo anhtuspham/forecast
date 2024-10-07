@@ -6,14 +6,6 @@ export type LocationType = {
 };
 
 export type WeatherType = {
-  search: {
-    id: number;
-    name: string;
-    region: string;
-    lat: number;
-    lon: number;
-    url: string;
-  };
   location: {
     name: string;
     region: string;
@@ -68,4 +60,14 @@ export type ForecastWeatherType = {
       };
     }>
   }
+}
+
+export type SearchLocationType = {
+  id: number;
+  name: string;
+  region: string;
+  country: string;
+  lat: number;
+  lon: number;
+  url: string;
 }

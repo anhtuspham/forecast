@@ -17,6 +17,8 @@ interface Props {
 export default function OverviewWeather({ data, addData }: Props) {
   const theme = useTheme();
 
+  console.log("weather data", data);
+
   return (
     <div className={styles.container}>
       <h2>Today's Highlights</h2>

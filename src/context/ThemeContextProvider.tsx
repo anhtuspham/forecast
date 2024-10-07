@@ -52,6 +52,7 @@ export function ThemeContextProvider({ children }: ThemeContext) {
             background: {
               default: "#f3f4f6",
               paper: grey[50],
+              secondary: "#333333",
             },
           }
         : {
@@ -61,6 +62,7 @@ export function ThemeContextProvider({ children }: ThemeContext) {
             background: {
               default: "#181818",
               paper: "#212020",
+              secondary: "#181818",
             },
             text: {
               primary: "#fff",
