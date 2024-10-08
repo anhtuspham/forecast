@@ -1,10 +1,3 @@
-// export type LocationType = {
-//   data: {
-//     id?: number;
-//     city: string | { latitude: number; longitude: number };
-//   };
-// };
-
 export type WeatherType = {
   location: {
     name: string;
