@@ -45,6 +45,7 @@ export default function Search() {
   const handleSelectPosition = (position: LocationType) => {
     setLocation(position);
     setIsDropdownOpen(false);
+    setSearchItem("");
   };
 
   // handle close dropdown
