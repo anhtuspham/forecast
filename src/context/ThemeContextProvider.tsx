@@ -9,6 +9,12 @@ import { amber, grey, blueGrey } from "@mui/material/colors";
 import { createContext, ReactNode, useEffect, useMemo, useState } from "react";
 import useMediaQuery from "@mui/material/useMediaQuery";
 
+declare module "@mui/material/styles" {
+  interface TypeBackground {
+    secondary: string;
+  }
+}
+
 type ThemeContext = {
   children: ReactNode;
 };
