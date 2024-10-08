@@ -1,4 +1,4 @@
-import { WeatherType, ForecastWeatherType, SearchLocationType } from "./types";
+import { WeatherType, ForecastWeatherType, LocationType } from "./types";
 
 export async function fetchWeatherData(
   typeAPI: string,
@@ -14,7 +14,7 @@ export async function fetchWeatherData(
   return await (await fetch(url)).json();
 }
 
-export async function searchLocation(city: string): Promise<SearchLocationType[]>{
+export async function searchLocation(city: string): Promise<LocationType[]>{
   const url = `${process.env.REACT_APP_WEATHER_API_URL}/search.json?q=${city}&key=${process.env.REACT_APP_WEATHER_API_KEY}&aqi=yes`;
   return await (await fetch(url)).json()
 }

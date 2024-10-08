@@ -1,9 +1,9 @@
-export type LocationType = {
-  data: {
-    id?: number;
-    city: string | { latitude: number; longitude: number };
-  };
-};
+// export type LocationType = {
+//   data: {
+//     id?: number;
+//     city: string | { latitude: number; longitude: number };
+//   };
+// };
 
 export type WeatherType = {
   location: {
@@ -62,12 +62,11 @@ export type ForecastWeatherType = {
   }
 }
 
-export type SearchLocationType = {
-  id: number;
-  name: string;
-  region: string;
-  country: string;
+export type LocationType = {
+  id?: number;
+  name?: string;
+  region?: string;
+  country?: string;
   lat: number;
   lon: number;
-  url: string;
 }

@@ -26,23 +26,22 @@ function App() {
   const [isLoading, setIsLoading] = useState<boolean>(false);
 
   // fetch weather api in current location
-
   useEffect(() => {
     const fetchData = async () => {
       if (location) {
         try {
           setIsLoading(true);
           const data = await fetchWeatherData("current.json", {
-            lat: location.latitude,
-            long: location.longitude,
+            lat: location.lat,
+            long: location.lon,
           });
           const additional = await fetchWeatherData("astronomy.json", {
-            lat: location.latitude,
-            long: location.longitude,
+            lat: location.lat,
+            long: location.lon,
           });
           const future = await fetchForecastWeatherData({
-            lat: location.latitude,
-            long: location.longitude,
+            lat: location.lat,
+            long: location.lon,
           });
 
           setWeatherData(data);

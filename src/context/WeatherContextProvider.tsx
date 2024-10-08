@@ -1,13 +1,9 @@
 import { useTheme } from "@mui/material";
 import { createContext, ReactNode, useEffect, useState } from "react";
+import { LocationType } from "../api/types";
 
 type WeatherContextProps = {
   children: ReactNode;
-};
-
-type LocationType = {
-  latitude: number;
-  longitude: number;
 };
 
 export const WeatherContext = createContext<{
@@ -40,8 +36,8 @@ export function WeatherContextProvider({ children }: WeatherContextProps) {
       navigator.geolocation.getCurrentPosition(
         (position) => {
           setLocation({
-            latitude: position.coords.latitude,
-            longitude: position.coords.longitude,
+            lat: position.coords.latitude,
+            lon: position.coords.longitude,
           });
         },
         (error) => {

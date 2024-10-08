@@ -3,15 +3,21 @@ import LocationOnIcon from "@mui/icons-material/LocationOn";
 
 import styles from "./Search.module.css";
 import { useTheme } from "@mui/material";
-import { useEffect, useState } from "react";
+import { useEffect, useState, useRef, useContext } from "react";
 import { searchLocation } from "../../api/weather";
-import { SearchLocationType } from "../../api/types";
+import { LocationType } from "../../api/types";
+import { WeatherContext } from "../../context/WeatherContextProvider";
 
 export default function Search() {
   const theme = useTheme();
   const [searchItem, setSearchItem] = useState<string>("");
-  const [searchResult, setSearchResult] = useState<SearchLocationType[]>([]);
+  const { setLocation } = useContext(WeatherContext);
+  const [searchResult, setSearchResult] = useState<LocationType[]>([]);
+  const [isDropDownOpen, setIsDropdownOpen] = useState<boolean>(false);
 
+  const inputSearchRef = useRef<HTMLDivElement>(null);
+
+  // call api to get search results
   useEffect(() => {
     const fetchData = async () => {
       if (searchItem) {
@@ -19,6 +25,7 @@ export default function Search() {
         try {
           const data = await searchLocation(searchItem);
           setSearchResult(data);
+          setIsDropdownOpen(true);
         } catch (err) {
           console.error("Error fetching data:", err);
         }
@@ -28,13 +35,34 @@ export default function Search() {
     fetchData();
   }, [searchItem]);
 
+  // handle search base on input value change
   const handleSearch = (event: React.ChangeEvent<HTMLInputElement>) => {
     const searchTerm = event.target.value;
     setSearchItem(searchTerm);
   };
 
+  // handle get weather data for the given search item
+  const handleSelectPosition = (position: LocationType) => {
+    setLocation(position);
+    setIsDropdownOpen(false);
+  };
+
+  // handle close dropdown
+  useEffect(() => {
+    const handleCloseDropdown = (event: MouseEvent) => {
+      if (!inputSearchRef.current?.contains(event.target as Node)) {
+        setIsDropdownOpen(false);
+      }
+    };
+
+    document.addEventListener("mousedown", handleCloseDropdown);
+    return () => {
+      document.removeEventListener("mousedown", handleCloseDropdown);
+    };
+  }, []);
+
   return (
-    <div className={styles.inputSearchContainer}>
+    <div className={styles.inputSearchContainer} ref={inputSearchRef}>
       {/* input search  */}
       <div
         className={styles.inputSearch}
@@ -43,6 +71,7 @@ export default function Search() {
             "--default-background-color": theme.palette.background.default,
           } as React.CSSProperties
         }
+        onClick={() => setIsDropdownOpen(true)}
       >
         <SearchIcon />
         <input
@@ -69,11 +98,11 @@ export default function Search() {
           } as React.CSSProperties
         }
       >
-        {searchResult && searchResult.length > 0 && (
+        {searchResult && isDropDownOpen && searchResult.length > 0 && (
           <ul className={styles.searchResult}>
             {searchResult.map((result, index) => (
               <li key={index}>
-                <button>
+                <button onClick={() => handleSelectPosition(result)}>
                   {result.name}, {result.region}, {result.country}
                 </button>
               </li>
