@@ -12,7 +12,6 @@ interface Props {
 }
 
 export default function Forecast({ data }: Props) {
-  console.log("data in forecast: ", data.forecast);
   const { currentUnitDegree, isCelsiusDegree } = useContext(WeatherContext);
 
   return (
