@@ -59,7 +59,7 @@ function App() {
   }, [location]);
 
   if (!weatherData || !additionalData || !futureData) {
-    return <div>No data available</div>;
+    return <Loading />;
   }
 
   return (

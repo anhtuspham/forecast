@@ -64,6 +64,11 @@
   .currentDegreeText {
     font-size: 3rem;
   }
+  .locationTimestamp h2,
+  .locationTimestamp span,
+  .locationTimestamp p {
+    font-size: 1.1rem;
+  }
 }
 
 @media (max-width: 768px) {
