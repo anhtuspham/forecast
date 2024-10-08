@@ -8,6 +8,7 @@
 
 .locationTimestamp {
   display: flex;
+  align-items: center;
   justify-content: space-between;
   border-bottom: 1px solid rgb(219, 217, 217);
 }
@@ -35,7 +36,7 @@
 }
 
 .currentCondition {
-  margin: 4rem 2rem;
+  margin: 4rem auto;
   display: flex;
   gap: 0.5rem;
   justify-content: center;
@@ -57,7 +58,7 @@
     height: 5rem;
   }
   .currentCondition {
-    margin: 3rem 1rem;
+    margin: 3rem auto;
     gap: 0.25rem;
   }
   .currentDegreeText {

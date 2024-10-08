@@ -50,7 +50,7 @@ export function ThemeContextProvider({ children }: ThemeContext) {
               secondary: grey[800],
             },
             background: {
-              default: "#f3f4f6",
+              default: "#edeef3",
               paper: grey[50],
               secondary: "#333333",
             },
