@@ -11,6 +11,7 @@ import { useContext, useEffect, useState } from "react";
 import { WeatherContext } from "./context/WeatherContextProvider";
 import { fetchForecastWeatherData, fetchWeatherData } from "./api/weather";
 import { ForecastWeatherType, WeatherType } from "./api/types";
+import { Loading } from "./components/ui/Loading/Loading";
 
 function App() {
   const theme = useTheme();
@@ -57,10 +58,6 @@ function App() {
     fetchData();
   }, [location]);
 
-  if (isLoading) {
-    return <div>...Loading</div>;
-  }
-
   if (!weatherData || !additionalData || !futureData) {
     return <div>No data available</div>;
   }
@@ -84,6 +81,7 @@ function App() {
           <OverviewWeather data={weatherData} addData={additionalData} />
         </Container>
       </Container>
+      {isLoading ? <Loading /> : null}
     </Container>
   );
 }
